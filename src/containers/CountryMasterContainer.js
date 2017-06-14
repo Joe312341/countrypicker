@@ -13,7 +13,6 @@ class CountryMasterContainer extends React.Component {
     };
   }
   render() {
-    console.log(this.props)
     return (
       <CountryMasterPage countries={this.props.countries} />
     );
