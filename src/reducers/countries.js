@@ -16,6 +16,7 @@ const initialState = {
   //     region: 'North America'
   //   }
   // ],
+  // api request for certain country
   selectedCountry: {
     name: 'Colombia',
     capital: 'Bogotá',
@@ -24,7 +25,10 @@ const initialState = {
     currencies: [{ code: 'COP', name: 'Colombian peso', symbol: '$' }],
     languages: [{ iso639_1: 'es', iso639_2: 'spa', name: 'Spanish', nativeName: 'Español' }],
     flag: 'https://restcountries.eu/data/col.svg'
-  }
+  },
+  searchFieldInput: '',
+  // this is for the UI part of marking the selected list item and is seperated from data concerns
+  activeCountryLI: ''
 };
 
 export default function countriesReducer(state = initialState, action) {
@@ -42,6 +46,16 @@ export default function countriesReducer(state = initialState, action) {
       return {
         ...state,
         selectedCountry: action.data[0]
+      };
+    case types.CHANGE_SEARCH_FIELD_INPUT:
+      return {
+        ...state,
+        searchFieldInput: action.inputValue
+      };
+    case types.SET_ACTIVE_COUNTRY_LI:
+      return {
+        ...state,
+        activeCountryLI: action.name
       };
     default:
       return state;

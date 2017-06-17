@@ -7,7 +7,7 @@ const fetchFailed = () => {
 };
 
 const fetchAllCountries = () => {
-  const url = 'https://restcountries.eu/rest/v2/all?fields=name;region';
+  const url = 'https://restcountries.eu/rest/v2/region/europe?fields=name;region';
   return fetch(url).then((response) => {
     if (response.status !== 200) {
       throw new Error(response.status);
