@@ -12,15 +12,28 @@ class CountryMasterContainer extends React.Component {
 
     };
   }
+  componentWillMount() {
+    this.props.actions.requestAllCountries();
+  }
   render() {
     return (
-      <CountryMasterPage countries={this.props.countries} />
+      <div>
+        { this.props.countries.length > 0 ?
+          <CountryMasterPage
+            countries={this.props.countries}
+            selectCountry={this.props.actions.selectCountry}
+          />
+          :
+          <div>Loading Countries...</div>
+        }
+      </div>
     );
   }
 }
 
 CountryMasterContainer.propTypes = {
-  countries: PropTypes.arrayOf(PropTypes.object).isRequired
+  countries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

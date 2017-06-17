@@ -5,3 +5,8 @@
 .right-border {
   border-right: black solid 1px;
 }
+
+.list-scrollable {
+  overflow: auto;
+  height: 100vh;
+}
