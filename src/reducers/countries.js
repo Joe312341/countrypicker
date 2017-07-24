@@ -2,30 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   countries: [],
-  // countries: [
-  //   {
-  //     name: 'Singapore',
-  //     region: 'Asia'
-  //   },
-  //   {
-  //     name: 'Germany',
-  //     region: 'Europe'
-  //   },
-  //   {
-  //     name: 'Canada',
-  //     region: 'North America'
-  //   }
-  // ],
-  // api request for certain country
-  selectedCountry: {
-    name: 'Colombia',
-    capital: 'Bogotá',
-    region: 'Americas',
-    population: 48759958,
-    currencies: [{ code: 'COP', name: 'Colombian peso', symbol: '$' }],
-    languages: [{ iso639_1: 'es', iso639_2: 'spa', name: 'Spanish', nativeName: 'Español' }],
-    flag: 'https://restcountries.eu/data/col.svg'
-  },
+  selectedCountry: {},
   searchFieldInput: '',
   // this is for the UI part of marking the selected list item and is seperated from data concerns
   activeCountryLI: ''

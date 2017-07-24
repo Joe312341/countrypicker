@@ -5,7 +5,7 @@ import { currencyPropType, languagePropType } from '../utils/customPropTypes';
 const CountryCard = ({ title, subTitle, image, languages, capitalCity, currencies, population }) => (
   <div className="thumbnail row card-background">
     <h2 className="text-center">{title}</h2>
-    <img src={image} alt="Country's Flag" className="responsive custom-image" />
+    <img src={image} alt="Country's Flag" className="responsive custom-image-size" />
     <div className="caption">
       <p className="text-center">
         Region: {subTitle} -- Population: {population} -- Capital: {capitalCity}

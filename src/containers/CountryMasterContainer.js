@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 
 // components / actions / utils
 import CountryMasterPage from '../pages/CountryMasterPage';
-import * as actions from '../actions';
+import * as countryActions from '../actions';
 import { filterCountries } from '../utils/helperFunctions';
+import { countryPropType } from '../utils/customPropTypes';
 
 class CountryMasterContainer extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class CountryMasterContainer extends React.Component {
 }
 
 CountryMasterContainer.propTypes = {
-  countries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  countries: PropTypes.arrayOf(countryPropType).isRequired,
   actions: PropTypes.object.isRequired,
   searchFieldInput: PropTypes.string.isRequired,
   activeCountryLI: PropTypes.string.isRequired
@@ -52,7 +53,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(Object.assign({}, actions), dispatch)
+  actions: bindActionCreators(Object.assign({}, countryActions), dispatch)
 });
 
 
