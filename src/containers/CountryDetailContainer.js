@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-// components / actions / utils
+// components / utils
 import CountryDetailPage from '../pages/CountryDetailPage';
 import { countryPropType } from '../utils/customPropTypes';
 

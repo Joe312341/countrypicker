@@ -4,8 +4,7 @@ import React from 'react';
 import CountryCard from '../components/CountryCard';
 import { countryPropType } from '../utils/customPropTypes';
 import { objectIsEmpty } from '../utils/helperFunctions';
-// make tile reusable by not using things as countrName etc. as prop input but more generic ones
-// change language, icon,capitalCity to attributes
+
 const CountryDetailPage = ({ selectedCountry }) => (
   <div>
     { objectIsEmpty(selectedCountry) ?

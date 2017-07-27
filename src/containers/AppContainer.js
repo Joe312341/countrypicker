@@ -10,6 +10,7 @@ import rootReducer from '../reducers';
 import rootSaga from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
+
 // initial store setup
 const configureStore = (initialState) => {
   const enhancer = compose(

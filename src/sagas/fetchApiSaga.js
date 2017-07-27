@@ -6,6 +6,10 @@ const fetchFailed = () => {
   console.log('failed');
 };
 
+/**
+ * returns all european countries from the restcountries api
+ * @return {Promise}
+ */
 const fetchAllCountries = () => {
   const url = 'https://restcountries.eu/rest/v2/region/europe?fields=name;region';
   return fetch(url).then((response) => {
@@ -16,6 +20,11 @@ const fetchAllCountries = () => {
   }).then(data => data);
 };
 
+/**
+ * returns a single country from the restcountries api
+ * @param {string} name
+ * @return {Promise}
+ */
 const fetchSingleCountry = (name) => {
   const url = `https://restcountries.eu/rest/v2/name/${name}`;
   return fetch(url).then((response) => {
@@ -26,7 +35,10 @@ const fetchSingleCountry = (name) => {
   }).then(data => data);
 };
 
-
+/**
+ * generator function which calls fetchAllCountries and dispatches the according action
+ * once fetchAllCountries returns the promise
+ */
 function* fetchData() {
   try {
     const data = yield call(fetchAllCountries);
@@ -36,6 +48,10 @@ function* fetchData() {
   }
 }
 
+/**
+ * generator function which calls fetchSingleCountry and dispatches the according action
+ * once fetchSingleCountry returns the promise
+ */
 function* fetchSingleCountryData(action) {
   try {
     const data = yield call(fetchSingleCountry, action.name);
@@ -45,9 +61,11 @@ function* fetchSingleCountryData(action) {
   }
 }
 
+/**
+ * generator function which listens to every dispatch of 'ALL_COUNTRIES_FETCH_REQUESTED'
+ * 'REQUEST_FAILED' and 'SINGLE_COUNTRY_REQUEST' and executes the respective functions
+*/
 export default function* watchFetchData() {
-  // listen to every dispatch of 'FETCH_REQUESTED' and 'FETCH_FAILED'
-  // and execute according functions
   yield takeEvery(types.ALL_COUNTRIES_FETCH_REQUESTED, fetchData);
   yield takeEvery(types.REQUEST_FAILED, fetchFailed);
   yield takeEvery(types.SINGLE_COUNTRY_REQUEST, fetchSingleCountryData);
