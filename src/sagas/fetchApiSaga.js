@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { put, takeEvery, call } from 'redux-saga/effects';
 import * as types from '../actions/types';
+import { createCountryObject } from '../utils/helperFunctions';
 
 const fetchFailed = () => {
   console.log('failed');
@@ -32,7 +33,7 @@ const fetchSingleCountry = (name) => {
       throw new Error(response.status);
     }
     return response.json();
-  }).then(data => data);
+  }).then(data => createCountryObject(data));
 };
 
 /**

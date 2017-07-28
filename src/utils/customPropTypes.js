@@ -12,9 +12,9 @@ export const currencyPropType = PropTypes.shape({
 });
 
 export const countryPropType = PropTypes.shape({
-  name: PropTypes.string.isRequired,
-  capital: PropTypes.string.isRequired,
-  region: PropTypes.string.isRequired,
+  countryName: PropTypes.string.isRequired,
+  capitalCity: PropTypes.string.isRequired,
+  regionName: PropTypes.string.isRequired,
   population: PropTypes.number.isRequired,
   currencies: PropTypes.arrayOf(currencyPropType.isRequired).isRequired,
   languages: PropTypes.arrayOf(languagePropType.isRequired).isRequired

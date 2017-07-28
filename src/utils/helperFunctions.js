@@ -22,3 +22,23 @@ export const filterCountries = (arrayOfCountries, searchFieldInput) => {
 export const objectIsEmpty = (object) => {
   return Object.keys(object).length === 0 && object.constructor === Object;
 };
+
+/**
+ * extracts necessary information from countryObject received by api
+ * the array of Objects given the API should only return one object
+ * namely the country or an empty array if no country is found
+ * @param {Object[]} singleCountry
+ * @return {Object}
+ */
+export const createCountryObject = (singleCountry) => {
+  const { name, region, flag, languages, capital, currencies, population } = singleCountry[0];
+  return Object.assign({}, {
+    countryName: name,
+    regionName: region,
+    flagImageLink: flag,
+    languages,
+    capitalCity: capital,
+    currencies,
+    population
+  });
+};

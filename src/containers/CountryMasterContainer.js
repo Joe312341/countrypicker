@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import CountryMasterPage from '../pages/CountryMasterPage';
 import * as countryActions from '../actions';
 import { filterCountries } from '../utils/helperFunctions';
-import { countryPropType } from '../utils/customPropTypes';
 
 class CountryMasterContainer extends React.Component {
   constructor(props) {
@@ -40,7 +39,10 @@ class CountryMasterContainer extends React.Component {
 }
 
 CountryMasterContainer.propTypes = {
-  countries: PropTypes.arrayOf(countryPropType).isRequired,
+  countries: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    region: PropTypes.string.isRequired
+  })).isRequired,
   actions: PropTypes.object.isRequired,
   searchFieldInput: PropTypes.string.isRequired,
   activeCountryLI: PropTypes.string.isRequired

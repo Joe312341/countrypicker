@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // components / utils
 import CountryDetailPage from '../pages/CountryDetailPage';
 import { countryPropType } from '../utils/customPropTypes';
+import { objectIsEmpty } from '../utils/helperFunctions';
 
 class CountryDetailContainer extends React.Component {
   constructor(props) {
@@ -13,13 +15,22 @@ class CountryDetailContainer extends React.Component {
   }
   render() {
     return (
-      <CountryDetailPage selectedCountry={this.props.selectedCountry} />
+      <div>
+        {
+          objectIsEmpty(this.props.selectedCountry) ?
+            <div>Select a country to get more information!</div> :
+            <CountryDetailPage selectedCountry={this.props.selectedCountry} />
+        }
+      </div>
     );
   }
 }
 
 CountryDetailContainer.propTypes = {
-  selectedCountry: countryPropType.isRequired
+  selectedCountry: PropTypes.oneOfType([
+    countryPropType,
+    PropTypes.object
+  ]).isRequired
 };
 
 const mapStateToProps = state => ({

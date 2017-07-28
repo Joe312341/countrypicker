@@ -22,7 +22,7 @@ export default function countriesReducer(state = initialState, action) {
     case types.SINGLE_COUNTRY_SUCCEEDED:
       return {
         ...state,
-        selectedCountry: action.data[0]
+        selectedCountry: action.data
       };
     case types.CHANGE_SEARCH_FIELD_INPUT:
       return {
